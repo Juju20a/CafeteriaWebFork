@@ -32,6 +32,11 @@ const ClientList = () => {
     setShowModal(false);
   };
 
+  const addClientToList = (newClient) => {
+    setClients([...clients, newClient]);
+    setShowModal(false);
+  };
+
   return (
     <div>
       <Button variant="primary" onClick={handleAddClient}>Adicionar Cliente +</Button>
