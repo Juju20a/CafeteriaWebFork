@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Modal, Alert } from 'react-bootstrap';
 import axios from 'axios';
-import ClientForm from './ClientForm'; // Ensure this component exists
+import ClientForm from './ClientForm';
 
 const ClientList = () => {
   const [clients, setClients] = useState([]);
@@ -21,12 +21,12 @@ const ClientList = () => {
       });
   }, []);
 
-  // Open modal
+ // Abrir modal
   const handleAddClient = () => {
     setShowModal(true);
   };
 
-  // Close modal
+  // Fechar modal
   const handleCloseModal = () => {
     setShowModal(false);
   };
