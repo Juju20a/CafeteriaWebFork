@@ -39,7 +39,10 @@ const ClientList = () => {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleAddClient}>Adicionar Cliente +</Button>
+      
+       <Button className="m-2" variant="primary" onClick={handleShow}>
+        +
+      </Button>
 
       <Table striped bordered hover>
         <thead>
