@@ -1,48 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Button, Modal } from 'react-bootstrap';
+import { Table, Button, Modal, Alert } from 'react-bootstrap';
 import axios from 'axios';
-import ClientForm from './ClientForm'; // Crie esse componente para o formulário
+import ClientForm from './ClientForm'; // Ensure this component exists
 
 const ClientList = () => {
   const [clients, setClients] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState(null); // State for error handling
 
-  // Função para buscar os dados dos clientes
+  // Fetch client data
   useEffect(() => {
-    axios.get('/api/clientes') // Alterar para sua URL de API
+    axios.get('/api/clientes') // Update to your API URL
       .then(response => {
         setClients(response.data);
+        setError(null); // Clear error on successful fetch
       })
-      .catch(error => console.error('Erro ao buscar os clientes:', error));
+      .catch(error => {
+        console.error('Erro ao buscar os clientes:', error);
+        setError('Não foi possível carregar os clientes.'); // Set error message
+      });
   }, []);
 
-  // Função para abrir o modal
+  // Open modal
   const handleAddClient = () => {
     setShowModal(true);
   };
 
-  // Função para fechar o modal
+  // Close modal
   const handleCloseModal = () => {
     setShowModal(false);
   };
 
-  // Função para adicionar um cliente à lista após o envio do formulário
+  // Add new client to the list
   const addClientToList = (newClient) => {
-    setClients([...clients, newClient]);
-    setShowModal(false);
-  };
-
-  const addClientToList = (newClient) => {
-    setClients([...clients, newClient]);
+    setClients(prevClients => [...prevClients, newClient]);
     setShowModal(false);
   };
 
   return (
     <div>
-      
-       <Button className="m-2" variant="primary" onClick={handleShow}>
+      <Button className="m-2" variant="primary" onClick={handleAddClient}>
         +
       </Button>
+
+      {error && <Alert variant="danger">{error}</Alert>} {/* Error alert */}
 
       <Table striped bordered hover>
         <thead>
@@ -65,7 +66,7 @@ const ClientList = () => {
         </tbody>
       </Table>
 
-      {/* Modal para o formulário */}
+      {/* Modal for the form */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Adicionar Cliente</Modal.Title>
@@ -79,4 +80,3 @@ const ClientList = () => {
 };
 
 export default ClientList;
-
