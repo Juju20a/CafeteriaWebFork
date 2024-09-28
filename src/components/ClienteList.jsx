@@ -12,7 +12,7 @@ const ClientList = () => {
     cep: '',
   });
 
-  // Buscar clientes do backend
+  
   useEffect(() => {
     axios.get('http://localhost:3000/clients')
       .then(response => setClients(response.data))
