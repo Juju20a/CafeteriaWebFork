@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import produtosDataSet from '../datasets/Produto';
 import ComprasTable from '../components/ComprasTable';
-import { Alert, Button, Form, Modal } from 'react-bootstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
 
 const Cardapio = () => {
   let [produtos, setProdutos] = useState([...produtosDataSet]);
