@@ -4,7 +4,7 @@ import Home from './views/Home';
 import NoPage from './views/NoPage';
 import Login from './views/Login';
 import CardapioYupFormik from './views/CardapioYupFormik';
-import ClientList from './components/ClientList';
+import ClienteList from './components/ClienteList';
 
 function App() {
   return (
