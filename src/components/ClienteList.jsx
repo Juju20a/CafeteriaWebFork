@@ -8,7 +8,7 @@ const ClientList = () => {
   const [newClient, setNewClient] = useState({
     name: '',
     email: '',
-    birthDate: '',
+    datadeNascimento: '',
     cep: '',
   });
 
